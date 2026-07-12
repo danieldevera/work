@@ -108,6 +108,30 @@
   .brands { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
   .brand { font-family: var(--mono); font-size: 12px; color: var(--ink); border: 1px solid var(--rule); padding: 3px 10px; border-radius: 3px; white-space: nowrap; }
 
+  .film .thumb { flex: none; width: 148px; height: 83px; object-fit: cover; display: block; background: var(--ink-3); }
+  @media (max-width: 480px) { .film .thumb { width: 104px; height: 58px; } }
+  .film .thumbwrap { position: relative; flex: none; display: none; }
+  .film.enhanced .thumbwrap { display: block; }
+  .film.enhanced > .play { display: none; }
+  .film .thumbwrap::after {
+    content: ""; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+    width: 34px; height: 34px; border-radius: 50%; background: rgba(10,10,11,.65);
+    border: 1.5px solid var(--ink);
+  }
+  .film .thumbwrap::before {
+    content: ""; position: absolute; left: calc(50% - 4px); top: calc(50% - 7px); z-index: 1;
+    border-left: 10px solid var(--ink); border-top: 7px solid transparent; border-bottom: 7px solid transparent;
+  }
+  .vmodal { position: fixed; inset: 0; z-index: 99; display: none; align-items: center; justify-content: center; background: rgba(5,5,6,.88); padding: 4vmin; }
+  .vmodal.open { display: flex; }
+  .vmodal .box { position: relative; width: min(1100px, 100%); aspect-ratio: 16/9; background: #000; }
+  .vmodal iframe { width: 100%; height: 100%; border: 0; }
+  .vmodal .close {
+    position: absolute; top: -44px; right: 0; background: none; border: 1px solid var(--ink-2);
+    color: var(--ink); font: 600 14px/1 var(--mono); padding: 8px 14px; cursor: pointer; border-radius: 3px;
+  }
+  .vmodal .close:hover, .vmodal .close:focus-visible { border-color: var(--ink); outline: none; }
+
   .foot { border-top: 1px solid var(--rule); padding-top: 26px; }
   .foot .thanks { font-size: 17px; font-weight: 700; margin: 0 0 18px; }
   .foot .sig { color: var(--ink-2); font-size: 13.5px; line-height: 1.7; }
@@ -137,9 +161,9 @@
         <h3>Inspire Others by EDIT.</h3>
         <p class="desc">Testimonial film series following alumni into the companies where they now work. Runs on the school's conversion pages today as the primary social proof block.</p>
         <div class="films">
-          <a class="film" href="https://vimeo.com/497606679"><span class="play"></span><span><span class="who">Maria Marcos</span><br><span class="org">Vanguard Properties</span></span><span class="go">Watch on Vimeo</span></a>
-          <a class="film" href="https://vimeo.com/389047399"><span class="play"></span><span><span class="who">Mariana Simões</span><br><span class="org">ITSector</span></span><span class="go">Watch on Vimeo</span></a>
-          <a class="film" href="https://vimeo.com/360511487"><span class="play"></span><span><span class="who">Nuno Duarte</span><br><span class="org">MINTY Square</span></span><span class="go">Watch on Vimeo</span></a>
+          <a class="film" data-vid="497606679" href="https://vimeo.com/497606679"><span class="play"></span><span><span class="who">Maria Marcos</span><br><span class="org">Vanguard Properties</span></span><span class="go">Watch on Vimeo</span></a>
+          <a class="film" data-vid="389047399" href="https://vimeo.com/389047399"><span class="play"></span><span><span class="who">Mariana Simões</span><br><span class="org">ITSector</span></span><span class="go">Watch on Vimeo</span></a>
+          <a class="film" data-vid="360511487" href="https://vimeo.com/360511487"><span class="play"></span><span><span class="who">Nuno Duarte</span><br><span class="org">MINTY Square</span></span><span class="go">Watch on Vimeo</span></a>
         </div>
         <div class="role"><span class="k">Role</span> Directed &amp; produced · concept, casting, scripts</div>
       </div>
@@ -172,7 +196,7 @@
         <h3>Industry Sessions by EDIT.</h3>
         <p class="desc">Industry-focused talks and workshops bridging students and companies: the lead-generation event engine behind the school's growth motion.</p>
         <div class="films">
-          <a class="film" href="https://vimeo.com/327898723"><span class="play"></span><span><span class="who">Industry Sessions</span><br><span class="org">Event film</span></span><span class="go">Watch on Vimeo</span></a>
+          <a class="film" data-vid="327898723" href="https://vimeo.com/327898723"><span class="play"></span><span><span class="who">Industry Sessions</span><br><span class="org">Event film</span></span><span class="go">Watch on Vimeo</span></a>
         </div>
         <div class="pending">One metric pending (sessions / attendance)</div>
         <div class="role"><span class="k">Role</span> Executive producer</div>
@@ -213,9 +237,9 @@
           <span class="brand">Red Bull</span><span class="brand">CUPRA</span><span class="brand">Samsung</span><span class="brand">Farfetch</span><span class="brand">Kia Motors</span><span class="brand">Mercedes-Benz</span><span class="brand">LG</span>
         </div>
         <div class="films">
-          <a class="film" href="https://vimeo.com/927121971"><span class="play"></span><span><span class="who">Projeto 360 na EDIT</span><br><span class="org">Program film</span></span><span class="go">Watch on Vimeo</span></a>
-          <a class="film" href="https://vimeo.com/394440022"><span class="play"></span><span><span class="who">Projeto 360º Digital Campaign</span><br><span class="org">LG · Salsa · Mercedes-Benz · Cálem</span></span><span class="go">Watch on Vimeo</span></a>
-          <a class="film" href="https://vimeo.com/593340119"><span class="play"></span><span><span class="who">Projeto 360º Digital Campaign</span><br><span class="org">2021/22 edition</span></span><span class="go">Watch on Vimeo</span></a>
+          <a class="film" data-vid="927121971" href="https://vimeo.com/927121971"><span class="play"></span><span><span class="who">Projeto 360 na EDIT</span><br><span class="org">Program film</span></span><span class="go">Watch on Vimeo</span></a>
+          <a class="film" data-vid="394440022" href="https://vimeo.com/394440022"><span class="play"></span><span><span class="who">Projeto 360º Digital Campaign</span><br><span class="org">LG · Salsa · Mercedes-Benz · Cálem</span></span><span class="go">Watch on Vimeo</span></a>
+          <a class="film" data-vid="593340119" href="https://vimeo.com/593340119"><span class="play"></span><span><span class="who">Projeto 360º Digital Campaign</span><br><span class="org">2021/22 edition</span></span><span class="go">Watch on Vimeo</span></a>
         </div>
         <div class="role"><span class="k">Role</span> Built &amp; ran the brand partnerships</div>
       </div>
@@ -229,11 +253,75 @@
     </div>
   </section>
 
+  <div class="vmodal" id="vmodal" role="dialog" aria-modal="true" aria-label="Video player">
+    <div class="box">
+      <button class="close" type="button" aria-label="Close video">Close ✕</button>
+      <div id="vslot"></div>
+    </div>
+  </div>
+
   <div class="foot">
     <p class="thanks">Thank you for reading.</p>
     <p class="sig">Daniel Devera<br>i.am.daniel.devera@gmail.com · +351 935 294 689</p>
   </div>
 </div>
+
+<script>
+(function () {
+  var films = document.querySelectorAll('a.film[data-vid]');
+  var modal = document.getElementById('vmodal');
+  var slot = document.getElementById('vslot');
+  var closeBtn = modal.querySelector('.close');
+  var lastFocus = null;
+
+  function openModal(vid, title) {
+    slot.innerHTML = '<iframe src="https://player.vimeo.com/video/' + vid +
+      '?autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="' + title + '"></iframe>';
+    slot.parentNode.insertBefore(slot.firstChild ? slot : slot, null);
+    modal.classList.add('open');
+    lastFocus = document.activeElement;
+    closeBtn.focus();
+    if (typeof gtag === 'function') gtag('event', 'video_open', { video_id: vid, video_title: title });
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    slot.innerHTML = '';
+    if (lastFocus) lastFocus.focus();
+  }
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+
+  films.forEach(function (a) {
+    var vid = a.getAttribute('data-vid');
+    fetch('https://vimeo.com/api/oembed.json?url=' + encodeURIComponent('https://vimeo.com/' + vid) + '&width=640')
+      .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+      .then(function (d) {
+        if (!d.thumbnail_url) throw 0;
+        var wrap = document.createElement('span');
+        wrap.className = 'thumbwrap';
+        var img = document.createElement('img');
+        img.className = 'thumb';
+        img.alt = '';
+        img.loading = 'lazy';
+        img.src = d.thumbnail_url;
+        img.onerror = function () { a.classList.remove('enhanced'); wrap.remove(); };
+        wrap.appendChild(img);
+        a.insertBefore(wrap, a.firstChild);
+        a.classList.add('enhanced');
+        var who = a.querySelector('.who');
+        var title = who ? who.textContent : 'Video';
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          openModal(vid, title);
+        });
+        var go = a.querySelector('.go');
+        if (go) go.textContent = 'Play';
+      })
+      .catch(function () { /* stays a plain link */ });
+  });
+})();
+</script>
 
 </body>
 </html>
